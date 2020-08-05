@@ -5,7 +5,6 @@
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
 var factorial = function(n) {
-
   // start at n and * till 1 
   // # using a for loop to start at n and countdown to 1 and multiply the length -1 
   // that it takes to get to 0 and return the answer and stop once you get to 0 
@@ -18,10 +17,9 @@ var factorial = function(n) {
   }
 
   //use
+  return n * factorial(n - 1);
+};
 
-  return n * factorial (n - 1)
-
-}
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
@@ -31,7 +29,6 @@ var sum = function(array) {
 }
 if (array.length-1 < 0){
  // return array + array.length-1; */
-
  let arr = array.slice();
  if (arr.length === 0) {
      return 0
@@ -40,7 +37,6 @@ if (array.length-1 < 0){
  }
  return arr.shift() + sum(arr);
   //use
-
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -50,17 +46,35 @@ var arraySum = function(array) {
 };
 
 // 4. Check if a number is even.
-// var isEven = function(n) {
-
-// if (n / 2 !== 1){
-// return false;
+var isEven = function(n) {
+ //if ( n / n !== ){
+   //return false;
 // }
-// // if (n / 2 === ){
-//   true
+// if ( n / n === 1) {
+//   return true;
 // }
 
-// isEven();
+/*if (n / 2 !== 1){
+return false;
+}
+if (n < 0 && n / -2 === 1){
+  return true;
+}*/
+if ( n === 1) {
+  return false;
+}
+if (n === 0) {
+  return true;
+}
+if (n < 0){
+return isEven(-n)
+}
 
+return isEven(n - 2);
+
+
+//return isEven(n / 2);
+// if n > 100 divide by 20 if n <= 20 then divide by 2 if n <= 10 && n > 0
 };
 
 // 5. Sum all integers below a given integer.
