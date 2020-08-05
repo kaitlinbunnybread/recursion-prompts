@@ -26,6 +26,7 @@ var sum = function(array) {
   if(array.slice(0, array.length-1)){
 
   }
+  return sum 
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
