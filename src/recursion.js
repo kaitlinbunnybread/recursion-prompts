@@ -81,13 +81,19 @@ return isEven(n - 2);
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-
-  if(n === 0){
-    return 1;
-  }
-
-  return n - sumBelow(n -1)
-  
+ 
+    if (n === 0){
+      return 0;
+    }
+    if (n < 0 ){
+      sum_sumBelow = n + 1 + sumBelow(n + 1);
+      return sum_sumBelow;
+    }
+    if (!sum_Below) var sum_Below = 0;
+    sum_sumBelow = n - 1 + sumBelow(n - 1);
+    return sum_sumBelow;
+    
+    
 };
 
 // 6. Get the integers in range (x, y).
