@@ -5,7 +5,6 @@
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
 var factorial = function(n) {
-
   // start at n and * till 1 
   // # using a for loop to start at n and countdown to 1 and multiply the length -1 
   // that it takes to get to 0 and return the answer and stop once you get to 0 
@@ -18,13 +17,18 @@ var factorial = function(n) {
   }
 
   //use
+  return n * factorial(n - 1);
+};
 
-  return n * factorial (n - 1)
-
-}
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
+  // base
+/*if (array !== []){
+  return 0;
+}
+if (array.length-1 < 0){
+ // return array + array.length-1; */
  let arr = array.slice();
  if (arr.length === 0) {
      return 0
@@ -32,6 +36,7 @@ var sum = function(array) {
      return array[0]
  }
  return arr.shift() + sum(arr);
+  //use
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -42,16 +47,22 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-  if( n === 0){
-    return true;
-  }
-  if( n === 1){
-    return false;
-  }
-  if (n < 0){
-    return isEven(-n)
-  }
-  return isEven(n -2);
+
+if ( n === 1) {
+  return false;
+}
+if (n === 0) {
+  return true;
+}
+if (n < 0){
+return isEven(-n)
+}
+
+return isEven(n - 2);
+
+
+//return isEven(n / 2);
+// if n > 100 divide by 20 if n <= 20 then divide by 2 if n <= 10 && n > 0
 };
 
 
@@ -59,34 +70,44 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-if (n === 0){
-  return 0;
-}
-if (n < 0 ){
-  sum_sumBelow = n + 1 + sumBelow(n + 1);
-  return sum_sumBelow;
-}
-if (!sum_Below) var sum_Below = 0;
-sum_sumBelow = n - 1 + sumBelow(n - 1);
-return sum_sumBelow;
+ 
+    if (n === 0){
+      return 0;
+    }
+    if (n < 0 ){
+      sum_sumBelow = n + 1 + sumBelow(n + 1);
+      return sum_sumBelow;
+    }
+    if (!sum_Below) var sum_Below = 0;
+    sum_sumBelow = n - 1 + sumBelow(n - 1);
+    return sum_sumBelow;
+    
+    
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
   let array = [];
-  if (x === y || x + 1 === y){
-    return [];
-  }
-  array.push( x + 1);
-  if(x > y){
+ 
+  if ( x > y){
     if (x === y || x - 1 === y){
       return [];
     }
+     
     array.push( x - 1);
-    return array.concat(range(x - 1, y));
+    
+  return array.concat(range(x - 1, y)); 
+  } 
+
+  if (x === y || x + 1 === y){
+    return [];
   }
-  return array.concat(range(x + 1, y));
+   
+  array.push( x + 1);
+  
+return array.concat(range(x + 1, y)); 
+ // return range(array.splice(x, y -1))
 };
 
 // 7. Compute the exponent of a number.
@@ -102,7 +123,7 @@ var exponent = function(base, exp) {
     return base
   }
   if(exp < 0){
-  return base * exponent(base, exp + 1);
+  return (1/exponent(base, -exp));
   }
  return base * exponent(base, exp -1);
 };
@@ -112,14 +133,32 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  if (n === 1) {
+      return true;
+  }
+  if (n < 1) {
+      return false;
+  }
+      return powerOfTwo(n / 2);
+
 };
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
+  if (string === ""){
+    return "";
+  }
+  return reverse(string.substr(1)) + string.charAt(0);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  let finalString = camelCase(string);
+  if(finalString.length === 1) return true;
+    if(finalString.length === 2) return finalString[0] === finalString[1];
+    if(finalString[0] === finalString.slice(-1)) return palindrome(finalString.slice(1,-1))
+    return false;
+  
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -133,6 +172,7 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 var multiply = function(x, y) {
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
