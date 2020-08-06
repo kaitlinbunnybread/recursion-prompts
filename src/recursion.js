@@ -81,11 +81,38 @@ return isEven(n - 2);
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+
+  if(n === 0){
+    return 1;
+  }
+
+  return n - sumBelow(n -1)
+  
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
+  let array = [];
+ 
+  if ( x > y){
+    if (x === y || x - 1 === y){
+      return [];
+    }
+     
+    array.push( x - 1);
+    
+  return array.concat(range(x - 1, y)); 
+  } 
+
+  if (x === y || x + 1 === y){
+    return [];
+  }
+   
+  array.push( x + 1);
+  
+return array.concat(range(x + 1, y)); 
+ // return range(array.splice(x, y -1))
 };
 
 // 7. Compute the exponent of a number.
