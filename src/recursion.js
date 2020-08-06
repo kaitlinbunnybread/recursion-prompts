@@ -25,13 +25,6 @@ var factorial = function(n) {
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
-  // base
-/*if (array !== []){
-  return 0;
-}
-if (array.length-1 < 0){
- // return array + array.length-1; */
-
  let arr = array.slice();
  if (arr.length === 0) {
      return 0
@@ -39,8 +32,6 @@ if (array.length-1 < 0){
      return array[0]
  }
  return arr.shift() + sum(arr);
-  //use
-
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -68,13 +59,34 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-
+if (n === 0){
+  return 0;
+}
+if (n < 0 ){
+  sum_sumBelow = n + 1 + sumBelow(n + 1);
+  return sum_sumBelow;
+}
+if (!sum_Below) var sum_Below = 0;
+sum_sumBelow = n - 1 + sumBelow(n - 1);
+return sum_sumBelow;
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
-  
+  let array = [];
+  if (x === y || x + 1 === y){
+    return [];
+  }
+  array.push( x + 1);
+  if(x > y){
+    if (x === y || x - 1 === y){
+      return [];
+    }
+    array.push( x - 1);
+    return array.concat(range(x - 1, y));
+  }
+  return array.concat(range(x + 1, y));
 };
 
 // 7. Compute the exponent of a number.
@@ -89,9 +101,10 @@ var exponent = function(base, exp) {
   if(exp === 1){
     return base
   }
-  
-  //use
- 
+  if(exp < 0){
+  return base * exponent(base, exp + 1);
+  }
+ return base * exponent(base, exp -1);
 };
 
 // 8. Determine if a number is a power of two.
