@@ -153,7 +153,7 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-  let finalString = camelCase(string);
+  let finalString = string.toLowerCase().split(" ").join("");
   if(finalString.length === 1) return true;
     if(finalString.length === 2) return finalString[0] === finalString[1];
     if(finalString[0] === finalString.slice(-1)) return palindrome(finalString.slice(1,-1))
@@ -194,7 +194,24 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+ 
+// test i the first letter is the same
+//if it the same return true//
+
+if (str1 === "" && str2 === "" ){
+  return true
+}
+ else {
+if (str1[0] === str2[0]){
+  return compareStr(str1.slice(1), str2.slice(1))
+}
+ else {
+return false
+  }
+}
 };
+
+  
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
